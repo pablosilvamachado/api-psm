@@ -1,5 +1,6 @@
 using api_psm.domain.Interface.Services;
 using api_psm.infra;
+using api_psm.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
