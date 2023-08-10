@@ -2,7 +2,7 @@
 
 namespace api_psm.domain.Entidades
 {
-    public class usuario: BaseEntity
+    public class Usuario: BaseEntity
     {
         public string Nome { get; set; }
         public string Login { get; set; }
