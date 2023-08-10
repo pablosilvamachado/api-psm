@@ -1,18 +1,25 @@
 ﻿using api_psm.domain.Entidades;
+using api_psm.domain.Interface.Repository;
 using api_psm.domain.Interface.Services;
 
 namespace api_psm.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        public Task<Usuario> Authenticate(string username, string password)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public UsuarioService(IUsuarioRepository usuarioRepository)
         {
-            throw new NotImplementedException();
+            _usuarioRepository = usuarioRepository;
         }
 
-        public Task<IEnumerable<Usuario>> GetAll()
+        public async Task<Usuario> Authenticate(string username, string password)
         {
-            throw new NotImplementedException();
+            return await _usuarioRepository.Authenticate(username, password);
+        }
+
+        public async Task<IEnumerable<Usuario>> GetAll()
+        {
+            return await _usuarioRepository.GetAll();
         }
     }
 }

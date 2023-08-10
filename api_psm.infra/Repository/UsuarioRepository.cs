@@ -1,21 +1,17 @@
 ﻿using api_psm.domain.Entidades;
 using api_psm.domain.Interface.Repository;
-using api_psm.infra.data.Factory;
-using System;
-using System.Collections.Generic;
+using api_psm.infra.Interface;
+using Dapper;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace api_psm.infra.data.Repository
 {
     public class UsuarioRepository: IUsuarioRepository
     {
-        private DbConnectionFactory _dbConnectionFactory;
 
-        public UsuarioRepository(DbConnectionFactory dbConnectionFactory)
+        private readonly IDbConnectionFactory _dbConnectionFactory;
+
+        public UsuarioRepository(IDbConnectionFactory dbConnectionFactory)
         {
             _dbConnectionFactory = dbConnectionFactory;
         }
@@ -25,9 +21,18 @@ namespace api_psm.infra.data.Repository
             return (SqlConnection)_dbConnectionFactory.CreateSqlConnection("MySql");
         }
 
-        public Task<Usuario> Authenticate(string username, string password)
+        public  Task<Usuario> Authenticate(string username, string password)
         {
-            throw new NotImplementedException();
+            using (var con = (SqlConnection)_dbConnectionFactory.CreateMySqlConnection("Connection"))
+            {
+                con.Open();
+
+                string sql = @"SELECT * FROM users WHERE username = username and password = @password";
+
+               var usuario = con.Query<Usuario>(sql, new { username = username, password = password } );
+            }
+            return Task.FromResult(new Usuario());  
+
         }
 
         public Task<IEnumerable<Usuario>> GetAll()

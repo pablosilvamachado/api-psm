@@ -19,6 +19,10 @@ namespace api_psm.infra.data.Factory
         {
             _connectionDictionary = connectionDictionary;
         }
+        public DbConnectionFactory()
+        {
+                
+        }
 
         private string GetConnectionString(string connectionName)
         {
