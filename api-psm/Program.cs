@@ -1,9 +1,9 @@
 using api_psm.Authorization;
+using api_psm.data.Repository;
 using api_psm.domain.Interface.Repository;
 using api_psm.domain.Interface.Services;
 using api_psm.infra;
 using api_psm.infra.data.Factory;
-using api_psm.infra.data.Repository;
 using api_psm.infra.Interface;
 using api_psm.Services;
 
@@ -19,7 +19,6 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddScoped<IUsuarioService, UsuarioService>();    
 }
  
-
 var app = builder.Build();
 
 // configure HTTP request pipeline

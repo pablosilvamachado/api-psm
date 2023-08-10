@@ -1,24 +1,24 @@
 ﻿using api_psm.infra.data.Enum;
 using api_psm.infra.data.Helpers;
 using api_psm.infra.Interface;
-using System;
-using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace api_psm.infra.data.Factory
 {
     public class DbConnectionFactory : IDbConnectionFactory
     {
-        private readonly IDictionary<string, string> _connectionDictionary;
+       // private readonly IDictionary<string, string> _connectionDictionary;
+        private readonly IConfiguration _configuration;
 
-        public DbConnectionFactory(IDictionary<string, string> connectionDictionary)
+
+        public DbConnectionFactory(IConfiguration configuration)
         {
-            _connectionDictionary = connectionDictionary;
+            _configuration = configuration;
         }
+
         public DbConnectionFactory()
         {
                 
@@ -26,7 +26,9 @@ namespace api_psm.infra.data.Factory
 
         private string GetConnectionString(string connectionName)
         {
-            _connectionDictionary.TryGetValue(connectionName, out string connectionString);
+            //_connectionDictionary.TryGetValue(connectionName, out string connectionString);
+
+            var connectionString = _configuration.GetConnectionString(connectionName);
 
             if (connectionString == null)
             {
@@ -70,18 +72,24 @@ namespace api_psm.infra.data.Factory
 
         private IDbConnection CreateDbConnection(string connectionString, DataAccessProviderTypes providerType)
         {
-            // Assume failure.
-            DbConnection connection = null;
+            //// Assume failure.
+            //DbConnection connection = null;
 
-            // Create the DbProviderFactory and DbConnection.
-            if (connectionString != null)
-            {
-                DbProviderFactory factory = DbProviderFactoryUtils.GetDbProviderFactory(providerType);
+            //// Create the DbProviderFactory and DbConnection.
+            //if (connectionString != null)
+            //{
+            //    DbProviderFactory factory = DbProviderFactoryUtils.GetDbProviderFactory(providerType);
 
-                connection = factory.CreateConnection();
-                connection.ConnectionString = connectionString;
-            }
-            // Return the connection.
+            //    connection = factory.CreateConnection();
+            //    connection.ConnectionString = connectionString;
+            //}
+            //// Return the connection.
+            ///4
+            ///
+
+            var connection = new MySqlConnection(connectionString);
+
+
             return connection;
         }
     }

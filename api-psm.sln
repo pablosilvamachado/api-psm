@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api-psm", "api-psm\api-psm.csproj", "{E633A118-0809-411E-B823-6674AA31631F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api-psm", "api-psm\api-psm.csproj", "{E633A118-0809-411E-B823-6674AA31631F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_psm.domain", "api_psm.domain\api_psm.domain.csproj", "{6129A414-770E-43E7-AE90-60056CD32472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api_psm.domain", "api_psm.domain\api_psm.domain.csproj", "{6129A414-770E-43E7-AE90-60056CD32472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_psm.infra.data", "api_psm.infra\api_psm.infra.data.csproj", "{F360CBCA-E066-4831-8916-B0263930A316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api_psm.infra.data", "api_psm.infra\api_psm.infra.data.csproj", "{F360CBCA-E066-4831-8916-B0263930A316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_psm.services", "api_psm.services\api_psm.services.csproj", "{4FA071E2-2DCA-4BF9-B900-694DE8CBEF6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api_psm.services", "api_psm.services\api_psm.services.csproj", "{4FA071E2-2DCA-4BF9-B900-694DE8CBEF6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_psm.data", "api_psm.data\api_psm.data.csproj", "{0AE497D7-DB5C-4070-88DC-DA0F7967B935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4FA071E2-2DCA-4BF9-B900-694DE8CBEF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FA071E2-2DCA-4BF9-B900-694DE8CBEF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA071E2-2DCA-4BF9-B900-694DE8CBEF6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE497D7-DB5C-4070-88DC-DA0F7967B935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE497D7-DB5C-4070-88DC-DA0F7967B935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE497D7-DB5C-4070-88DC-DA0F7967B935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE497D7-DB5C-4070-88DC-DA0F7967B935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
