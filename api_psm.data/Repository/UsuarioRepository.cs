@@ -2,8 +2,7 @@
 using api_psm.domain.Interface.Repository;
 using api_psm.infra.Interface;
 using Dapper;
-using MySqlConnector;
-
+using System.Data;
 
 namespace api_psm.data.Repository
 {
@@ -17,18 +16,20 @@ namespace api_psm.data.Repository
             _dbConnectionFactory = dbConnectionFactory;
         }      
 
-        public Task<Usuario> Authenticate(string username, string password)
+        public async Task<Usuario> Authenticate(string username, string password)
         {
             IEnumerable<Usuario> usuario;
             try
             {               
-                using (var con = (MySqlConnection)_dbConnectionFactory.CreateMySqlConnection("DefaultConnection"))
+                using (IDbConnection con = _dbConnectionFactory.CreateMySqlConnection("DefaultConnection"))
                 {
                     con.Open();
 
-                    string sql = @"SELECT  user_login as Login, user_pass as Senha FROM users WHERE user_login = @username and user_pass = @password";
+                    string sql = @"SELECT  user_login as Login, user_pass as Senha 
+                                   FROM users 
+                                   WHERE user_login = @username and user_pass = @password";
 
-                    usuario = con.Query<Usuario>(sql, new { username = username, password = password });
+                    usuario = await con.QueryAsync<Usuario>(sql, new { username = username, password = password });
                 }
             }
             catch (Exception ex)
@@ -36,15 +37,12 @@ namespace api_psm.data.Repository
                 throw ex;
             }
 
-            return Task.FromResult(usuario.FirstOrDefault());
+            return Task.FromResult<Usuario>(usuario.FirstOrDefault<Usuario>()).Result;
         }
 
         public Task<IEnumerable<Usuario>> GetAll()
         {
             throw new NotImplementedException();
         }
-
-      
-
     }
 }
