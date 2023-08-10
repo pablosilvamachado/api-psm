@@ -10,7 +10,7 @@ namespace api_psm.controller
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private IUsuarioService _UsuarioService;
+        private readonly IUsuarioService _UsuarioService;
 
         public UsuarioController(IUsuarioService usuarioService)
         {
