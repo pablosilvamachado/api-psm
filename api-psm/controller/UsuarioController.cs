@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.Authorization;
 using api_psm.Models;
+using api_psm.Controller;
 
 namespace api_psm.controller
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsuarioController : ControllerBase
+    public class UsuarioController : ApiController
     {
         private readonly IUsuarioService _UsuarioService;
 
@@ -28,6 +27,7 @@ namespace api_psm.controller
 
             return Ok(user);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
