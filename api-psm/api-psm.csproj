@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\api_psm.data\api_psm.data.csproj" />
     <ProjectReference Include="..\api_psm.domain\api_psm.domain.csproj" />
     <ProjectReference Include="..\api_psm.infra\api_psm.infra.data.csproj" />
     <ProjectReference Include="..\api_psm.services\api_psm.services.csproj" />
